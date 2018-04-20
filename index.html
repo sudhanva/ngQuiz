@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<title></title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+	<div class="container">
+		<div class="page-header">
+			<h1>Quiz Facts</h1>
+		</div>
+		<div ng-controller="listCtrl">
+			<div class="row">
+				<div class="col-sm-6"  ng-repeat="data in turtlesData">
+					<div class="well well-sm">
+						<div class="row">
+							<div class="col-md-6">
+								<img ng-src="{{data.image_url}}" class="well-image img-rounded img-responsive">
+							</div>
+							<div class="col-md-6">
+								<h4>{{data.type}}</h4>
+								<p><strong>Locations</strong>:{{data.locations}}</p>
+								<p><strong>Size</strong>:{{data.size}}</p>
+								<p><strong>Average Life Span</strong>:{{data.lifespan}} </p>
+
+								<p><strong>Diet:</strong>{{data.diet}} </p>
+								<button  ng-click="changeActiveTurtle(data)" class="btn btn-primary pull-right" data-toggle="modal" data-target="#turtle-info">Learn more</button>
+							</div>
+						</div>
+					</div>
+
+				</div>		
+			</div>	
+			<div class="modal" id="turtle-info">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h2>{{activeTurtle.type}}</h2>
+						</div>
+						<div class="modal-body">
+							<div class="row">
+								<div class="col-xs-8 col-xs-offset-2">
+									<img ng-src="{{activeTurtle.image_url}}" class="img-rounded img-responsive">
+								</div>
+							</div>
+							<hr>
+							<div class="row">
+								<div class="col-md-6">
+									<p><strong>Locations</strong>:{{activeTurtle.locations}}</p>
+									<p><strong>Size</strong>:{{activeTurtle.size}}</p>
+									<p><strong>Average Life Span</strong>:{{activeTurtle.lifespan}} </p>
+									<p><strong>Diet:</strong>{{activeTurtle.diet}} </p>
+								</div>
+								<div class="col-xs-12 top-buffer">
+									<p>{{activeTurtle.description}}</p>
+									<button class="btn btn-danger pull-right" data-dismiss="modal">Close</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="https://code.angularjs.org/1.5.9/angular.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="js/list.js"></script>		
+</html>
