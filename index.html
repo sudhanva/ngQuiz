@@ -10,9 +10,16 @@
 		<div class="page-header">
 			<h1>Quiz Facts</h1>
 		</div>
-		<div ng-controller="listCtrl">
+		<div ng-controller="listCtrl" ng-hide="quizMetrix.quizActive">
+			<form class="form-inline well well-small clearfix">
+				<span class="glyphicon glyphicon-search	">
+					<input type="text" name="" placeholder="Search..." class="form-control" ng-model="search">
+
+				</span>
+				<button class="btn btn-warning pull-right" ng-click="activateQuiz()">Start Quiz</button>
+			</form>
 			<div class="row">
-				<div class="col-sm-6"  ng-repeat="data in turtlesData">
+				<div class="col-sm-6"  ng-repeat="data in turtlesData | filter:search">
 					<div class="well well-sm">
 						<div class="row">
 							<div class="col-md-6">
@@ -63,6 +70,38 @@
 			</div>
 
 		</div>
+		<div ng-controller="quizCtlr" ng-show="quizMetrix.quizActive" >
+				<h1>Quiz</h1>
+				<div class="row">
+					<div class="col-xs-8">
+						<h4>Progress</h4>
+						<div class="btn-toolbar">
+							<button class="btn" ng-repeat="question in quizQuestions" ng-class="{'btn-info':question.selected !== null, 'btn-danger':question.selected === null}">
+								<span class="glyphicon" ng-class="{'glyphicon-pencil':question.selected !== null, 'glyphicon-question-sign':question.selected === null}"></span>
+							</button>
+						</div>
+					</div>
+					<div class="col-xs-4">
+						<div class="row">
+							<h4>Legend</h4>
+							<div class="col-sm-4">
+								<button class="btn btn-info">
+									<span class="glyphicon-pencil"></span>
+
+								</button>
+								<p>Answered</p>
+							</div>
+							<div class="col-sm-4">
+								<button class="btn btn-danger">
+									<span class="glyphicon glyphicon-question-sign"></span>
+
+								</button>
+								<p>Un Answered</p>
+							</div>  
+						</div>
+					</div>
+				</div>
+		</div>
 	</div>
 </body>
 <script type="text/javascript" src="https://code.angularjs.org/1.5.9/angular.min.js"></script>
@@ -71,5 +110,8 @@
 
 
 <script type="text/javascript" src="js/app.js"></script>
-<script type="text/javascript" src="js/list.js"></script>		
+<script type="text/javascript" src="js/list.js"></script>	
+<script type="text/javascript" src="js/quiz.js"></script>
+<script type="text/javascript" src="js/factories/quizMetrix.js"></script>	
+<script type="text/javascript" src="js/factories/dataService.js"></script>
 </html>
