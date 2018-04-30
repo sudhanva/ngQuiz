@@ -2,3 +2,12 @@
 	width: 100%;
 	height: 162px;
 }
+
+.answer{
+	padding: 15px 20px;
+	border-radius: 10px;
+	border:1px solid;
+}
+.answer:hover{
+	cursor: pointer;;
+}

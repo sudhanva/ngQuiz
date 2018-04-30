@@ -71,36 +71,52 @@
 
 		</div>
 		<div ng-controller="quizCtlr" ng-show="quizMetrix.quizActive" >
-				<h1>Quiz</h1>
-				<div class="row">
-					<div class="col-xs-8">
-						<h4>Progress</h4>
-						<div class="btn-toolbar">
-							<button class="btn" ng-repeat="question in quizQuestions" ng-class="{'btn-info':question.selected !== null, 'btn-danger':question.selected === null}">
-								<span class="glyphicon" ng-class="{'glyphicon-pencil':question.selected !== null, 'glyphicon-question-sign':question.selected === null}"></span>
-							</button>
-						</div>
-					</div>
-					<div class="col-xs-4">
-						<div class="row">
-							<h4>Legend</h4>
-							<div class="col-sm-4">
-								<button class="btn btn-info">
-									<span class="glyphicon-pencil"></span>
-
-								</button>
-								<p>Answered</p>
-							</div>
-							<div class="col-sm-4">
-								<button class="btn btn-danger">
-									<span class="glyphicon glyphicon-question-sign"></span>
-
-								</button>
-								<p>Un Answered</p>
-							</div>  
-						</div>
+			<h1>Quiz</h1>
+			<div class="row">
+				<div class="col-xs-8">
+					<h4>Progress</h4>
+					<div class="btn-toolbar">
+						<button class="btn" ng-repeat="question in quizQuestions" ng-class="{'btn-info':question.selected !== null, 'btn-danger':question.selected === null}">
+							<span class="glyphicon" ng-class="{'glyphicon-pencil':question.selected !== null, 'glyphicon-question-sign':question.selected === null}"></span>
+						</button>
 					</div>
 				</div>
+				<div class="col-xs-4">
+					<div class="row">
+						<h4>Legend</h4>
+						<div class="col-sm-4">
+							<button class="btn btn-info">
+								<span class="glyphicon-pencil"></span>
+
+							</button>
+							<p>Answered</p>
+						</div>
+						<div class="col-sm-4">
+							<button class="btn btn-danger">
+								<span class="glyphicon glyphicon-question-sign"></span>
+
+							</button>
+							<p>Un Answered</p>
+						</div>  
+					</div>
+				</div>
+				<div class="row">
+					<h3>Questions</h3>
+					<div class="well well-sm">
+						<div class="row">
+							<div class="col-xs-12">
+								<h4>{{activeQuestion + 1 + "." + quizQuestions[activeQuestion].text}}</h4>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-6" ng-repeat="answer in quizQuestions[activeQuestion].possibilities">
+								<h4 class="answer">{{answer.answer}}</h4>
+							</div>
+						</div>	
+					</div>
+					<button class="btn btn-warning" ng-click="questionAnswered()">Continue</button>
+				</div>
+			</div>
 		</div>
 	</div>
 </body>
