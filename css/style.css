@@ -11,3 +11,18 @@
 .answer:hover{
 	cursor: pointer;;
 }
+
+.img-answered{
+	cursor: pointer;
+	height: 350px;
+	width: 100%;
+	overflow: hidden;
+	border-radius: 10px;
+	margin-bottom: 20px;
+
+}
+
+.img-answered img{
+	width: 100%;
+	height: auto;
+}
