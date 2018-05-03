@@ -9,7 +9,7 @@
 				$scope.turtlesData=DataService.turtlesData;
 
 				$scope.activateQuiz = function(){
-					quizMetrix.changeState(true);
+					quizMetrix.changeState("quiz", true);
 				}
 				$scope.changeActiveTurtle=function(index){
 					$scope.activeTurtle = index;
